@@ -1,0 +1,11 @@
+const router = require('express').Router();
+const { getStats, getUsers, updateUser, getJobs, getPayments, deleteJob } = require('../controllers/adminController');
+const { protect, authorize } = require('../middleware/auth');
+router.use(protect, authorize('admin'));
+router.get('/stats', getStats);
+router.get('/users', getUsers);
+router.put('/users/:id', updateUser);
+router.get('/jobs', getJobs);
+router.delete('/jobs/:id', deleteJob);
+router.get('/payments', getPayments);
+module.exports = router;
